@@ -68,6 +68,7 @@ class TwitterStream {
                     stream.on('data', (line) => {
                         this._refreshTimeout();
                         if (!line.trim()) {
+                            this._emit(Promise.resolve({ done: false, value: { data: "" } }));
                             return;
                         }
                         if (line == 'Rate limit exceeded') {
