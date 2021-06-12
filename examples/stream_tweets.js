@@ -15,7 +15,8 @@ async function main() {
 
   // Read data from the stream
   for await (const { data } of stream) {
-    console.log(`${data.id}: ${data.text.replace(/\s/g, ' ')}`);
+    if (data === "") console.log("HeartBeat"); // Handle here heartbeats.
+    else console.log(`${data.id}: ${data.text.replace(/\s/g, ' ')}`);
   }
 
   console.log('Stream closed.');

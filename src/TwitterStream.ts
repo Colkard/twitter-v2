@@ -107,6 +107,7 @@ export default class TwitterStream {
             this._refreshTimeout();
 
             if (!line.trim()) {
+              this._emit(Promise.resolve({ done: false, value: { data: "" } })); // Notify a HeartBeat, this should happen every 20 seconds.
               return;
             }
 

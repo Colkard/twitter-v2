@@ -103,7 +103,8 @@ setTimeout(() => {
 }, 30000);
 
 for await (const { data } of stream) {
-  console.log(data);
+  if (data === "") console.log("HeartBeat"); // Handle here heartbeats.
+  else console.log(data);
 }
 ```
 
